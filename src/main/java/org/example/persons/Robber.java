@@ -1,6 +1,8 @@
 package org.example.persons;
 
-public class Robber extends Person{
+import org.example.models.Person;
+
+public class Robber extends Person {
     public Robber(String name) {
         super(name,
                 true,

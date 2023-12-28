@@ -1,5 +1,7 @@
 package org.example.persons;
 
+import org.example.models.Person;
+
 public class Villager extends Person {
 
     public Villager(String name) {

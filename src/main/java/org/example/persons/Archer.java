@@ -1,5 +1,7 @@
 package org.example.persons;
 
+import org.example.models.Person;
+
 public class Archer extends Person {
     public Archer(String name) {
         super(name,
