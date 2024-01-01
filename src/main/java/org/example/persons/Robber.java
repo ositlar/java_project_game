@@ -3,21 +3,21 @@ package org.example.persons;
 import org.example.models.Person;
 
 public class Robber extends Person {
-    public Robber(String name) {
+    public Robber(String name, int x, int y) {
         super(name,
                 true,
                 true,
                 true,
                 150,
-                0,
                 150,
-                0,
-                0,
-                0,
-                new int[]{12, 15});
+                10,
+                new int[]{12, 15},
+                x,
+                y);
+        this.team = 0;
     }
     @Override
     public String toString() {
-        return "Robber{" + name + '}';
+        return "Robber{" + name + '}' + position;
     }
 }

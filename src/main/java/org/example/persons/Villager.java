@@ -4,22 +4,21 @@ import org.example.models.Person;
 
 public class Villager extends Person {
 
-    public Villager(String name) {
+    public Villager(String name, int x, int y, byte team) {
         super(name,
                 true,
                 false,
                 false,
                 70,
-                1,
                 70,
-                1,
-                0,
-                0,
-                new int[]{0}
-        );
+                5,
+                new int[]{0},
+                x,
+                y);
+        this.team = team;
     }
     @Override
     public String toString() {
-        return "Villager{" + name + '}';
+        return "Villager{" + name + '}' + position;
     }
 }
