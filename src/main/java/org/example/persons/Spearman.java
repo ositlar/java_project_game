@@ -1,8 +1,9 @@
 package org.example.persons;
 
+import org.example.models.Infantry;
 import org.example.models.Person;
 
-public class Spearman extends Person {
+public class Spearman extends Infantry {
     public Spearman(String name, int x, int y) {
         super(name,
                 true,
@@ -19,5 +20,10 @@ public class Spearman extends Person {
     @Override
     public String toString() {
         return "Spearman{" + name + '}' + position;
+    }
+
+    @Override
+    public void step(Person target) {
+        //Step...
     }
 }

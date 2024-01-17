@@ -14,11 +14,17 @@ public class Villager extends Person {
                 5,
                 new int[]{0},
                 x,
-                y);
+                y,
+                0);
         this.team = team;
     }
     @Override
     public String toString() {
         return "Villager{" + name + '}' + position;
+    }
+
+    @Override
+    public void step(Person target) {
+        //Step...
     }
 }

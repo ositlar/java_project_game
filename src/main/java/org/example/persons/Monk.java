@@ -1,8 +1,9 @@
 package org.example.persons;
 
 import org.example.models.Person;
+import org.example.models.Wizard;
 
-public class Monk extends Person {
+public class Monk extends Wizard {
     public Monk(String name, int x, int y) {
         super(name,
                 false,
@@ -20,5 +21,10 @@ public class Monk extends Person {
     @Override
     public String toString() {
         return "Monk{" + name + '}' + position;
+    }
+
+    @Override
+    public void step(Person target) {
+        //Step...
     }
 }

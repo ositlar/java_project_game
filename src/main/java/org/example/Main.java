@@ -1,9 +1,12 @@
 package org.example;
 
+import org.example.models.Archer;
+import org.example.models.IGame;
 import org.example.models.Person;
 import org.example.persons.*;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
@@ -32,7 +35,7 @@ public class Main {
             int pers = rnd.nextInt(0, 4);
             switch (pers) {
                 case 0:
-                    gamePersons.add(new Archer(getName(), 9, i));
+                    gamePersons.add(new Crossbowman(getName(), 9, i));
                     break;
                 case 1:
                     gamePersons.add(new Monk(getName(), 9, i));
@@ -45,11 +48,22 @@ public class Main {
                     break;
             }
         }
+        //gamePersons.forEach(person -> person.step(person));
+        gamePersons.sort(new Comparator<Person>() {
+            @Override
+            public int compare(Person o1, Person o2) {
+                return o2.getInitiative() - o1.getInitiative();
+            }
+        });
         gamePersons.forEach(System.out::println);
     }
 
     static String getName() {
         return Names.values()[new Random().nextInt(Names.values().length - 1)].toString();
+    }
+
+    static void archerAttack(List<Person> enemies, Archer person) {
+        person.attack(person.getClosestTarget(enemies));
     }
 }
 
