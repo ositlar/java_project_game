@@ -2,6 +2,7 @@ package org.example.models;
 
 import org.example.Coordinates;
 
+import java.util.List;
 import java.util.Random;
 
 public abstract class Person implements IGame {
@@ -10,6 +11,11 @@ public abstract class Person implements IGame {
     protected int maxHealth, currentHealth, healthRegen;
     protected int[] damage;
     protected Coordinates position;
+
+    public byte getTeam() {
+        return team;
+    }
+
     protected byte team;
 
     protected byte initiative;
@@ -25,20 +31,6 @@ public abstract class Person implements IGame {
         this.damage = damage;
         this.position = new Coordinates(x, y);
         this.initiative = (byte) initiative;
-    }
-
-    public void healPerson(Person target) {
-        Random rnd = new Random();
-        int healEffect = rnd.nextInt(damage[0], damage[1]);
-        if (target.maxHealth - target.currentHealth < healEffect) {
-            target.currentHealth = target.maxHealth;
-        } else {
-            target.currentHealth += healEffect;
-        }
-    }
-
-    public void reanimate(Person target) {
-        target.currentHealth = 20;
     }
 
     public Coordinates getPosition() {
@@ -69,6 +61,8 @@ public abstract class Person implements IGame {
     public void step(Person target) {
 
     }
+
+
 
     public byte getInitiative() {
         return initiative;

@@ -9,10 +9,12 @@ public abstract class Wizard extends Person{
     public void heal(Person person) {
         Random rnd = new Random();
         int heal = rnd.nextInt(this.damage[0], this.damage[1] + 1);
-        if (person.currentHealth + heal > person.maxHealth) {
-            person.currentHealth = person.maxHealth;
-        } else {
-            person.currentHealth += heal;
-        }
+        person.getHeal(heal);
+    }
+
+    @Override
+    public void step(Person target) {
+        heal(target);
+        System.out.println(this.name + ": Step is done ");
     }
 }

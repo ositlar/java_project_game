@@ -42,19 +42,13 @@ public abstract class Archer extends Person {
                 '}';
     }
 
-    public Person getClosestTarget(List<Person> enemies) {
-        double min = 0;
-        double temp = 0;
-        Person result = null;
-        for (int i = 0; i < enemies.size(); i++) {
-            temp = this.position.getDistance(enemies.get(i).getPosition());
-            if (temp < min) {
-                min = temp;
-                result = enemies.get(i);
-            }
-        }
-        return result;
-    }
 
+
+    @Override
+    public void step(Person target) {
+        attack(target);
+        replenishmentArrows(1);
+        System.out.println(this.name + ": Step is done(Archer)");
+    }
 
 }

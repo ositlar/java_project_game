@@ -14,7 +14,7 @@ public class Main {
     public static void main(String[] args) {
         List<Person> gamePersons = new ArrayList<>();
         Random rnd = new Random();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 5; i++) {
             int pers = rnd.nextInt(0, 4);
             switch (pers) {
                 case 0:
@@ -31,7 +31,7 @@ public class Main {
                     break;
             }
         }
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 5; i++) {
             int pers = rnd.nextInt(0, 4);
             switch (pers) {
                 case 0:
@@ -48,22 +48,33 @@ public class Main {
                     break;
             }
         }
-        //gamePersons.forEach(person -> person.step(person));
         gamePersons.sort(new Comparator<Person>() {
             @Override
             public int compare(Person o1, Person o2) {
                 return o2.getInitiative() - o1.getInitiative();
             }
         });
-        gamePersons.forEach(System.out::println);
+        gamePersons.forEach(x -> x.step(getClosestTarget(gamePersons, x)));
     }
 
     static String getName() {
         return Names.values()[new Random().nextInt(Names.values().length - 1)].toString();
     }
 
-    static void archerAttack(List<Person> enemies, Archer person) {
-        person.attack(person.getClosestTarget(enemies));
+    public static Person getClosestTarget(List<Person> enemies, Person person) {
+        double min = 0;
+        double temp = 0;
+        Person result = null;
+        for (int i = 0; i < enemies.size(); i++) {
+            if (enemies.get(i).getTeam() != person.getTeam()) {
+                temp = person.getPosition().getDistance(enemies.get(i).getPosition());
+                if (temp < min) {
+                    min = temp;
+                    result = enemies.get(i);
+                }
+            }
+        }
+        return result;
     }
 }
 

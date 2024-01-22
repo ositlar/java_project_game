@@ -22,9 +22,4 @@ public class Villager extends Person {
     public String toString() {
         return "Villager{" + name + '}' + position;
     }
-
-    @Override
-    public void step(Person target) {
-        //Step...
-    }
 }

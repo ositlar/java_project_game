@@ -14,4 +14,25 @@ public abstract class Infantry extends Person implements IGame {
         int damage = rnd.nextInt(this.damage[0], this.damage[1] + 1);
         target.getDamage(damage);
     }
+
+    @Override
+    public void step(Person target) {
+        if (this.currentHealth > 0) {
+
+            if (Math.abs(target.getPosition().x - this.position.x) >= Math.abs(target.getPosition().y - this.position.y)) {
+                if (target.getPosition().x - this.position.x > 0) {
+                    this.position.x++;
+                } else {
+                    this.position.x--;
+                }
+            } else {
+                if (target.getPosition().y - this.position.y > 0) {
+                    this.position.y++;
+                } else {
+                    this.position.y--;
+                }
+            }
+            System.out.println(this.name + ": Step is done (Infantry)");
+        }
+    }
 }
