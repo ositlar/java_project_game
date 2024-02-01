@@ -15,8 +15,12 @@ public class Citizen extends Hero {
         hero.receiveArrows(newArrows);
     }
 
-    public boolean getIsBusy() {return isBusy;}
-    public void setIsBusy(boolean status) {isBusy = status;}
+    public boolean getIsBusy() {
+        return isBusy;
+    }
+    public void setIsBusy(boolean status) {
+        isBusy = status;
+    }
 
     public void bringArrows(Archer hero, ArrayList<Hero> teammates) {
         setIsBusy(true);

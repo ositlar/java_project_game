@@ -104,7 +104,6 @@ public abstract class Hero implements Game {
             armor -= damage;
             return;
         }
-
         health -= (damage - armor);
         armor = 0;
         if (health < 0) health = 0;
