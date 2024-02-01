@@ -86,10 +86,10 @@ public abstract class Healer extends Hero {
     public void play(ArrayList<Hero> enemies, ArrayList<Hero> teammates) {
 
         if (this.isDead()) return;
+        regenerateMana();
 
         if (isAllMeleeDead(teammates)) {
             helpNearestDeadMelee(teammates);
-            regenerateMana();
             return;
         }
 
@@ -99,12 +99,9 @@ public abstract class Healer extends Hero {
 
         if (canHeal(nearestWoundedTeammate)) {
             heal(nearestWoundedTeammate);
-            regenerateMana();
             return;
         }
-
         moveToward(nearestWoundedTeammate, teammates);
-        regenerateMana();
     }
 
     @Override
